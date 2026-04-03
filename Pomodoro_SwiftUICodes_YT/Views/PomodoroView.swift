@@ -80,6 +80,48 @@ struct PomodoroView: View {
                 }
                 
                 // Control Buttons
+                HStack(spacing: 30) {
+                    
+                    // reset
+                    ControlButton(
+                        icon: "arrow.counterclockwise",
+                        colour: .gray,
+                        size: 56) {
+                            withAnimation(.spring(response: 0.3)) {
+                                pomodoroTimer.reset()
+                            }
+                        }
+                    
+                    // play, pause
+                    ControlButton(
+                        icon: pomodoroTimer.isRunning ? "pause.fill" : "play.fill",
+                        colour: pomodoroTimer.currentMode.colour,
+                        size: 80) {
+                            withAnimation(.spring(response: 0.3)) {
+                                if pomodoroTimer.isRunning {
+                                    pomodoroTimer.pause()
+                                } else {
+                                    pomodoroTimer.start()
+                                }
+                            }
+                        }
+                    
+                    // skip
+                    ControlButton(
+                        icon: "forward.fill",
+                        colour: .gray,
+                        size: 56) {
+                            withAnimation(.spring(response: 0.3)) {
+                                let modes = TimerMode.allCases
+                                if let currentIndex = modes.firstIndex(of: pomodoroTimer.currentMode) {
+                                    let nextIndex = (currentIndex + 1) % modes.count
+                                    pomodoroTimer.switchMode(modes[nextIndex])
+                                }
+                            }
+                        }
+                }
+                .padding(.bottom, 50)
+                
                 
             }
         }.foregroundStyle(.white)
