@@ -32,4 +32,49 @@ class PomodoroTimer {
         let seconds = timeRemaining % 60
         return String(format: "%02d:%02d", minutes, seconds)
     }
+    
+    func start() {
+        isRunning = true
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+            if self.timeRemaining > 0 {
+                self.timeRemaining -= 1
+            } else {
+                self.timerCompleted()
+            }
+        }
+    }
+    
+    func pause() {
+        isRunning = false
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    func reset() {
+        pause()
+        timeRemaining = currentMode.duration
+    }
+    
+    func switchMode(_ mode: TimerMode) {
+        pause()
+        currentMode = mode
+        timeRemaining = mode.duration
+    }
+    
+    private func timerCompleted() {
+        pause()
+
+        if currentMode == .focus {
+            completedPomodoros += 1
+            // every 4th pomodoro gets a long break
+            if completedPomodoros % 4 == 0 {
+                switchMode(.longBreak)
+            } else {
+                switchMode(.shortBreak)
+            }
+        } else {
+            switchMode(.focus)
+        }
+    }
 }
