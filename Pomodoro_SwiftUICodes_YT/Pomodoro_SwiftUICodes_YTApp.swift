@@ -12,7 +12,7 @@ import SwiftUI
 struct Pomodoro_SwiftUICodes_YTApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            PomodoroView()
         }
     }
 }

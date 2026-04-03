@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  PomodoroView.swift
 //  Pomodoro_SwiftUICodes_YT
 //
 //  Created by app-kaihatsusha on 03/04/2026.
@@ -8,18 +8,14 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct PomodoroView: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            CircularProgressView(progress: 0.75, mode: .focus, timeString: "13:43")
         }
-        .padding()
     }
 }
 
 #Preview {
-    ContentView()
+    PomodoroView()
 }
