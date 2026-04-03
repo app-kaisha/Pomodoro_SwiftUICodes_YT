@@ -16,14 +16,14 @@ struct ModeSelectorButton: View {
     
     var body: some View {
         Button(action: action) {
-            VStack(spacing: 8) {
+            VStack(spacing: 6) {
                 Image(systemName: mode.icon)
                     .font(.system(size: 18))
                 Text(mode.rawValue)
                     .font(.system(size: 11, weight: .medium))
             }
             .foregroundStyle(isSelected ? .white : .white.opacity(0.5))
-            .frame(width: 60, height: 90)
+            .frame(width: 90, height: 60)
             .background(
                 RoundedRectangle(cornerRadius: 16)
                     .fill(isSelected ? mode.colour.opacity(0.3) : .white.opacity(0.05))
