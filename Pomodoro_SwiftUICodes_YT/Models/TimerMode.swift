@@ -35,7 +35,7 @@ enum TimerMode: String, CaseIterable {
         }
     }
     
-    var gardientColours: [Color] {
+    var gradientColours: [Color] {
         switch self {
         case .focus:
             return [.orange, .red]

@@ -27,7 +27,7 @@ struct CircularProgressView: View {
                 .trim(from: 0, to: animatedProgress)
                 .stroke(
                     AngularGradient(
-                        gradient: Gradient(colors: mode.gardientColours),
+                        gradient: Gradient(colors: mode.gradientColours),
                         center: .center,
                         startAngle: .degrees(-90),
                         endAngle: .degrees(270)
