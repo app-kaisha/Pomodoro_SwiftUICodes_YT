@@ -6,4 +6,10 @@
 //  Copyright © 2026 app-kaihatsusha. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
+
+enum TimerMode: String, CaseIterable {
+    case focus = "Focus"
+    case shortBreak = "Short Break"
+    case longBreak = "Long Break"
+}
